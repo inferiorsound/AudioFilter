@@ -428,7 +428,10 @@ void createBLTStage(BiquadParam& param, double freq, double gain, double Q, Filt
         param.b2 = (A * ((A + 1) + (A - 1)*cos(w0) - 2 * sqrt(A)*alpha)) / a0;
         param.a1 = (2 * ((A - 1) - (A + 1)*cos(w0))) / a0;
         param.a2 = ((A + 1) - (A - 1)*cos(w0) - 2 * sqrt(A)*alpha) / a0;
+    default:
+        break;
     }
+
     param.useCompensation = false;
 }
 
