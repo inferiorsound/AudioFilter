@@ -248,7 +248,7 @@ public:
             break;
         case bwHiPass:
             if (useQBasedButterworth)
-                QBasedButterworth::createHiLoPass(cascade, true, freq, order, sampleRate, impl);
+                QBasedButterworth::createHiLoPass(cascade, freq, true, order, sampleRate, impl);
             else
                 creator.createHiLoPass(cascade, freq, true, order, sampleRate);
             break;

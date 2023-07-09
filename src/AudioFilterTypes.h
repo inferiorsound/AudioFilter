@@ -39,7 +39,7 @@ public:
     *   ctor. Takes the maximum size as argument.
     */
     PreallocatedArray(int maxSize)
-        : elements(maxSize)
+        : elements(static_cast<size_t> (maxSize))
     {
     }
 

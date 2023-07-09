@@ -12,14 +12,14 @@ namespace Response
 //==============================================================================
 std::vector<float> createLogFreqs(float startFreq, float endFreq, int numPoints)
 {
-    std::vector<float> ret(numPoints);
+    std::vector<float> ret(static_cast<size_t> (numPoints));
 
     const auto logEndStart = std::log(endFreq / startFreq);
 
     for (int i = 0; i < numPoints; ++i)
     {
         const auto freq = startFreq * std::exp(logEndStart * i / (numPoints - 1.f));
-        ret[i] = freq;
+        ret[static_cast<size_t> (i)] = freq;
     }
 
     return ret;
@@ -194,7 +194,7 @@ void ResponseBase::getResponse(const BiquadParam& params, std::vector<float>& ga
     {
         const auto bin = getBinForFreq(peakFreq);
         const auto gain = AudioFilter::Response::getResponsePoint(params, peakFreq, sampleRate);
-        gains[bin] = static_cast<float> (gain*gain);
+        gains[static_cast<size_t> (bin)] = static_cast<float> (gain*gain);
     }
 }
 
@@ -211,7 +211,7 @@ void ResponseBase::getResponse(const BiquadParamCascade& params, std::vector<flo
     {
         const auto bin = getBinForFreq(peakFreq);
         const auto gain = AudioFilter::Response::getResponsePoint(params, peakFreq, sampleRate);
-        gains[bin] = static_cast<float> (gain*gain);
+        gains[static_cast<size_t> (bin)] = static_cast<float> (gain*gain);
     }
 }
 
